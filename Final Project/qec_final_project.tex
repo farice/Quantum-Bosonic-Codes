@@ -112,13 +112,21 @@ It's especially important to consider a practical bosonic error model before des
 
 We can describe this using the pure-loss channel, which is a model for broadband-line and free-space communication [3] and it is the most common incoherent error pro- cess in optical and microwave cavities [23]. The second most common error is cavity dephasing, which is caused by fluctuations in the cavity frequency. Optical cavities have to be actively stabilized to fix the frequency, but the effects of such fluctuations are small relative to effects of energy loss, particularly in microwave cavities. There are also other coherent error processes, such as a Kerr non- linearity [29], which we briefly consider in Sec. VIII A.
 
-The bosonic pure-loss channel is given by $N = \exp(\kappa t D)$ with superoperator $D(\cdot) = a a^\dag - 1/2 \{ n , \cdot \}$ with $\kappa$ as the excitation loss rate and time interval $t$\cite{albert2017performance}. Another way to represent this is in the Kraus representation with Kraus operators
+The bosonic pure-loss channel is given by $N_\gamma = \exp(\kappa t D)$ ($\gamma$ defined below) with superoperator $D(\cdot) = a a^\dag - 1/2 \{ n , \cdot \}$ with $\kappa$ as the excitation loss rate and time interval $t$\cite{albert2017performance}. Another way to represent this is in the Kraus representation with Kraus operators
 
 $$
 E_l = \Big(\frac{\gamma}{1-\gamma}\Big)^{l / 2} \frac{a^l}{\sqrt{l!}}(1 - \gamma)^{n / 2}
 $$
 
-where $\gamma = 1 - \exp(- \kappa t)$. Observe that this channel does not contain identity as a Kraus operator for $\gamma \neq 0$ due to damping/back-action $(1-\gamma)^{n / 2}$. Hence, even if there is no loss, there is still redistribution of probabilities of being in Fock states.
+where $\gamma = 1 - \exp(- \kappa t)$. This is derived by integrating over all the possible jump times of exactly $l$ photon jumps during the time interval $\kappa t$\cite{chuang1997bosonic}. Therefore, the channel can be described as 
+
+$$
+N_\gamma = \sum_l^\infty E_l \rho E_l^\dag
+$$
+
+for density operator $\rho$.
+
+Observe that this channel does not contain identity as a Kraus operator for $\gamma \neq 0$ due to damping/back-action $(1-\gamma)^{n / 2}$. So, even if there is no loss, there is still redistribution of probabilities of being in Fock states. Furthermore, this redistribution takes place over continuous time. 
 
 \section{Single Mode Codes}
 
