@@ -448,21 +448,11 @@ Finally, we observe that $J_2$ spreads out the quartic stabilizing nonlinearity 
 \subsubsection{$\chi^{(2)}$ Binomial Codes}
 \label{sec:multi-binom}
 
-Cat codes’ universal gate set relies on induced four-wave mixing interactions in Josephson junctions, which are much stronger than optical four-wave mixing in Kerr media. Cat codes have lower encod- ing overhead than generic QEC codes, because they introduce fewer error mechanisms. In addition, their requiring fewer physical resources than generic QEC codes makes it easier for them to reach the break-even point 
+As with pair-cat codes, a motivation for developing a new code is that single-mode cat codes’ universal gate set relies on induced four-wave mixing interactions in Josephson junctions, which are much stronger than optical four-wave mixing in Kerr media. Hence, $\chi^{(2)}$ codes (which are more general than the $\chi^{(2)}$ binomial codes we focus on here) seek to develop quantum computation using only $\chi^{(2)}$ interactions for coherent photon conversion together with linear-optics transformations \cite{niu2018hardware} since it is a lower-order nonlinearity and hence potentially stronger than four-wave mixing.
 
-Quantum computation using only these resources is of interest because the χ(2) interaction is a lower-order nonlinearity, hence po- tentially stronger than four-wave mixing. Furthermore, excit- ing new technologies—such as solid-state circuits [24], flux- driven Josephson-junction parametric amplifiers [25–27], su- perconducting resonator arrays [28, 29], ring resonators [30], and frequency-degenerate double-lambda systems [31]—have been expanding the platforms for and increasing the efficien- cies of χ(2) interactions.
+To build this code Niu et al establish a symmetry-operator framework that leverages the symmetry of the physical subspace supporting the logical codewords and the symmetry of the measurable syndromes, which we describe below. Ultimately, they show that It is worth emphasizing that the $\chi^{(2)}$ binomial code is the first Fock-basis bosonic QEC code that can correct $N$  photon-loss errors using $O(N)$ photons for its encoding. In fact, all of the codes we have discuss previously require encoding with $O(N^2$ photons. However, this code requires channel-monitoring resources, which the other studied codes do not, that is used to de-termine the number of photons that have been lost or gained. Hence, this highlights the importance of channel monitoring for the extra error-correction power it can provide.
 
-Unfortunately, the single-photon qubit basis used in Ref. [23] is not closed under χ(2) Hamiltonian evolutions, nor is it suitable for error correction, because any single-photon- loss error will destroy the quantum information carried by the qubit. Moreover, existing single-photon, multi-mode, QEC codes—such as the bosonic code [9], the quantum parity- check code [19], and the NOON code [34]—are not designed for hardware-efficient operation on an underlying architecture comprised of χ(2) interactions and linear optics.
-
-In the present paper we take the next step, by proposing the first QEC codes for χ(2)-based universal quantum computa- tion and then demonstrating their hardware efficiency. To do so we establish a symmetry-operator framework, that lever- ages the symmetry of the physical subspace supporting the logical codewords and the symmetry of the measurable syn- dromes.
-
-
-It is worth emphasizing that the χ(2) BC is the first Fock- basis bosonic QEC code that can correct N -photon-loss errors using O(N) photons for its encoding; all previous bosonic QEC codes with that error-correction capability require en- coding with O(N2) photons [9, 14, 16–19, 34, 37, 38]. Be- ing able to correct the loss of a constant fraction of the total photons for any code size is of great advantage for both large- scale quantum computation and long-range quantum commu- nication. However, the χ(2) BC requires channel-monitoring resources—which our other codes do not—that it uses to de- termine the number of photons that have been lost or gained. Our result thus highlights the importance of channel monitor- ing for the extra error-correction power it can provide by ob- viating a constraint from the error-correction condition [39], and it alerts us to the need for resource-efficient channel mon- itoring.
-
-To verify that χ(2) BC’s satisfies the preceding error- correction condition. let us start with the simplest case, the N = 2 code in which each logical qubit is encoded as
-
-
-This code uses a notion of "symmetry operators". First, we consider $N$-pump-photon 3-mode subspace $\mathcal{H}_N$ and observe that all states $\ket{\psi} = \sum_{n=0}^N c_n \ket{n, n, N-n} \in \mathcal{H}_N$ obey the following relations
+Now, we consider the notion of "symmetry operators". First, we consider $N$-pump-photon 3-mode subspace $\mathcal{H}_N$ and observe that all states $\ket{\psi} = \sum_{n=0}^N c_n \ket{n, n, N-n} \in \mathcal{H}_N$ obey the following relations
 
 \begin{align}
 \begin{split}
@@ -509,16 +499,6 @@ As an example, however, Niu et al show that when completing the set of symmetry 
 \end{align*}
 
 and one can verify using (\ref{eq:k-l}) that the code is robust against up to second order loss or gain and first order dephasing across all modes.
-
-Hardware Efficient Constructions
-
-Noon codes
-
-\begin{itemize}
-	\item To create more useful quantum superpositions of Fock states which can store quantum information, it is necessary to couple the bosonic mode to a non-linear element, e.g., a superconducting qubit, a trapped ion, or a Rydberg atom
-		\item $\chi(2)$ code uses $O(n)$ instead of $O(n^2)$ qubits that previous two mode codes had used to correct $m$ loss/gain/dephasing errors (Niu)
-		\item Inspired by cat code, but uses lower order non-linearity
-	\end{itemize}
 
 \subsubsection{Importance of Bosonic Systems}
 
