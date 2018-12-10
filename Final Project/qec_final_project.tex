@@ -256,6 +256,7 @@ Now, we can use the approximate quantum error correction conditions we developed
 
 and so the approximation quantum error correction conditions (\ref{eq:aqec}) are violated when this is nonzero, since there exists uncorrectable errors of order $O(\kappa \delta t)$. Observe that the term goes to zero as $\alpha\rightarrow \infty$, however. Hence, to suppress these errors, we may require a large $\alpha$. Recalling that the $\alpha$ label for a coherent state indicates the mean photon number for the Poissonian distribution of number states that $\ket{\alpha}$ represent, we see that this potential increase in average photon number relative to other codes can then introduces a greater error rate.
 
+\subsubsection{Discrete Loss Errors}
 
 Now, we use the relations above (\ref{eq:cat-rels}) to specify action of $\hat{a}$ on our cat code states.
 
@@ -270,7 +271,9 @@ Hence, we see that application of $\hat{a}$ on an even parity ($\Pi = 0$) cat st
 
 However, if $\hat{a}^2$ is applied, then we evidently generate a logical bit flip while preserving parity. Therefore, our parity measurement will indicate no change in parity while a non-trivial transformation takes place. Hence, $\hat{a}^2$ is non-correctable.
 
-Furthermore, since no-jump evolution damps coherent states, $(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}$, the only necessary correction is a “re-pumping” of the cat states. This can be achieved using a discrete unitary correction operation (analogous to the binomial codes) or continuous non-linear amplification coming from an engineered reservoir [17, 18] (analogous to similar passive/autonomous error correction schemes [94, 95]). The basic principle of passive schemes is stabilization of a manifold of codewords as an attractive (stable) fixed-point of drives and dissipation so that the only remaining task is to track generalized parity for photon jumps [18]. The cat codes based on equal amplitude coherent state superpositions, cf. Eq. (31), are ‘natural’ candidates for these purposes since they require only gradual continuous inversion of the damping of the coherent state amplitude without active discrete correction stages. The two-leg cat has already been stabilized by reservoir engineering to achieve dominant two-photon drive and two-photon dissipation [96].
+\subsubsection{Dephasing Errors}
+
+As noted above, dephasing errors are suppressed to the same order that the normalization constants for the $p$th moment of photon number are equivalent for each of the logical states. In particular, dephasing errors are suppressed exponentially in $\alpha^2$.
 
 \subsection{Binomial Codes}
 
@@ -329,6 +332,8 @@ Now, if we consider dephasing errors as well, the error correction matrix is no 
 The single-mode binomial codes require an explicit correction gate at every timestep whether or not a photon jump has occurred. However, binomial codes satisfy the approximate quantum error correction conditions to order $\delta t$ with a smaller average photon number: $\bar{n} = 2$ for the code of Eq. (2), rather than $\bar{n} = 2.3$ for the cat code that minimizes Eq. (32). Furthermore, the binomial codes operate in a restricted Hilbert space, which could be beneficial for the practical construction of the unitary operators required for error diagnosis and recovery. This particularly applies to errors involving $\hat{a}^\dag$ operators, whose operation on cat codes is less straightforward than $\hat{a}$ operators alone.
 
 The Fock state distributions of the binomial and cat codes are binomial and Poissonian, respectively. As the average number of photons is increased (larger N), both of these distributions approach a normal distribution, and so the binomial and cat codes asymptotically approach each other. 
+
+Furthermore, since no-jump evolution damps coherent states, $(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}$, the only necessary correction is a “re-pumping” of the cat states. This can be achieved using a discrete unitary correction operation (analogous to the binomial codes) or continuous non-linear amplification coming from an engineered reservoir [17, 18] (analogous to similar passive/autonomous error correction schemes [94, 95]). The basic principle of passive schemes is stabilization of a manifold of codewords as an attractive (stable) fixed-point of drives and dissipation so that the only remaining task is to track generalized parity for photon jumps [18]. The cat codes based on equal amplitude coherent state superpositions, cf. Eq. (31), are ‘natural’ candidates for these purposes since they require only gradual continuous inversion of the damping of the coherent state amplitude without active discrete correction stages. The two-leg cat has already been stabilized by reservoir engineering to achieve dominant two-photon drive and two-photon dissipation [96].
 
 \begin{figure}[H]
 \centering
