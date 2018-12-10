@@ -139,7 +139,7 @@ $$
 
 for density operator $\rho$.
 
-Observe that this channel does not contain the identity as a Kraus operator when $\gamma \neq 0$ due to the "damping" ("back-action") term $(1-\gamma)^{n / 2}$ which results from the non-triviality of observing no photon jump. So, even if there is no loss, there is still redistribution of the probabilities of being in Fock states. Furthermore, both this redistribution and photon loss take place over continuous time and so continuous time evolutions results in an infinite set of possible errors. Therefore, the error correction criteria (\ref{eq:k-l}) can't be utilized directly. 
+Observe that this channel does not contain the identity as a Kraus operator when $\gamma \neq 0$ due to the "no-jump" (also "damping" or "back-action") term $(1-\gamma)^{n / 2}$ which results from the non-triviality of observing no photon jump. So, even if there is no loss, there is still redistribution of the probabilities of being in Fock states. Furthermore, both this redistribution and photon loss take place over continuous time and so continuous time evolutions results in an infinite set of possible errors. Therefore, the error correction criteria (\ref{eq:k-l}) can't be utilized directly. 
 
 Instead, one can expand each error operator in powers of $\kappa \delta t$ (where again $\delta t$ is a small finite time interval) and choose to correct up to a given highest order. This is termed "approximate quantum error correction" \cite{mandayam2012towards}. It is then enough to satisfy the quantum error correction criteria (\ref{eq:k-l}) only approximately such that the original state can be recovered with an accuracy given by the same highest order in $\kappa \delta t$ \cite{michael2016new}.
 
@@ -335,7 +335,7 @@ The Fock state distributions of the binomial and cat codes are binomial and Pois
 
 Furthermore, since no-jump evolution damps coherent states, $(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}$, the only necessary correction is a “re-pumping” of the cat states. This can be achieved using a discrete unitary correction operation (analogous to the binomial codes) or continuous non-linear amplification coming from an engineered reservoir [17, 18] (analogous to similar passive/autonomous error correction schemes [94, 95]). The basic principle of passive schemes is stabilization of a manifold of codewords as an attractive (stable) fixed-point of drives and dissipation so that the only remaining task is to track generalized parity for photon jumps [18]. The cat codes based on equal amplitude coherent state superpositions, cf. Eq. (31), are ‘natural’ candidates for these purposes since they require only gradual continuous inversion of the damping of the coherent state amplitude without active discrete correction stages. The two-leg cat has already been stabilized by reservoir engineering to achieve dominant two-photon drive and two-photon dissipation [96].
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \includegraphics[width=0.5\linewidth,keepaspectratio]{binom_cat.png}	
 \caption{Figure borrowed from \cite{michael2016new} comparing binomial codes to cat codes. Observe that, in principle, unlimited dephasing errors can be tolerated by cat codes.}
@@ -362,7 +362,7 @@ Optimal recovery for each code is computable via a semi-definite program
 		\item With ordinary cat codes and current technology, the number parity syndrome makes it difficult to realize simultaneous discrete (usually for loss) and continuous error correction  (usually for dephasing)
 	\end{itemize}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth,keepaspectratio]{pair_cat.png}	
 \caption{Figure from \cite{albert2018multimode} comparing single-mode cat codes to pair-cat codes}
