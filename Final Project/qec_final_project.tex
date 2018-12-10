@@ -120,7 +120,7 @@ It's especially important to consider a practical bosonic error model before des
 
 We can describe this using the pure-loss channel, which is a model for broadband-line and free-space communication and it is the most common incoherent error pro- cess in optical and microwave cavities \cite{albert2017performance}. The second most common error is cavity dephasing, which is caused by fluctuations in the cavity frequency. Optical cavities have to be actively stabilized to fix the frequency, but the effects of such fluctuations are small relative to effects of energy loss, particularly in microwave cavities. 
 
-The bosonic pure-loss channel is given by $N_\gamma = \exp(\kappa t D)$ ($\gamma$ defined below) with superoperator $D(\cdot) = \hat{a} \hat{a}^\dag - 1/2 \{ \hat{n} , \cdot \}$, excitation loss rate $\kappa$,  and time interval $t$ \cite{albert2017performance}. Another way to represent this is in the Kraus representation with Kraus operators
+The bosonic pure-loss channel is given by $N_\gamma = \exp(\kappa t D)$ ($\gamma$ defined below) with Lindblad superoperator $D(\cdot) = \hat{a} \hat{a}^\dag - 1/2 \{ \hat{n} , \cdot \}$, excitation loss rate $\kappa$,  and time interval $t$ \cite{albert2017performance}. Another way to represent this is in the Kraus representation with Kraus operators
 
 \begin{align}
 \label{eq:kraus}
@@ -318,12 +318,20 @@ Now, if we consider dephasing errors as well, the error correction matrix is no 
 
 \subsection{GKP Codes}
 
-\begin{itemize}
-\item Use the continuous basis of non-normalizable eigenstates of the position operator $x$	
-\item Not enough time!
-\item Quantum analoge of frequency combs
-\item Key: protect against displacement errors $D_\alpha = \exp{\alpha a^\dag  - \alpha* a}$, not loss errors explicitly
-\end{itemize}
+While all codes discussed so far are defined using a dis- crete (i.e., countable) basis, the Gottesman, Kitaev, and Preskill (GKP) codes [13] are defined using the continu- ous basis of non-normalizable eigenstates of the position operator xˆ. A unique resulting feature of GKP codes is that the correctable errors themselves form a continuous set. The simplest ideal qubit GKP words are
+
+\begin{align*}
+\ket{GKP_{\uparrow/\downarrow}} \sim \sum_{p\text{ even/odd}}^{(-\infty, \infty)} \hat{D}\Big(p \sqrt{\frac{\pi}{2}} \Big) \ket{\hat{x} = 0} 	
+\end{align*}
+
+
+  where $\hat{D}$ is the displacement operator from Eq. (10) and $\ket{\hat{x} = 0}$ is the starting position eigenstate. In position space, such states are infinite combs of position eigenstates spaced $2\sqrt{\pi}$ apart, so the effective spacing between the two logical states is $S=\sqrt{\pi}$. The same result holds in momentum ($\hat{p}$) space via Fourier transform of Eq.(36). Naturally, all position and momentum shifts $\exp(-iu\hat{p})\exp(-iv\hat{x})$ with $|u|, |v| \leq \sqrt{\pi}/2$ are correctable. However, the GKP codes can also correct any error operators expandable in the basis of correctable shifts. Careful expansion of photon loss $\ket{a}$ and other errors [20] has confirmed that GKP codes can in principle (i.e., for small enough $\kappa \delta t$) correct photon loss, gain, and dephasing errors.
+  
+The ideal GKP code words (36) contain both an infinite number of photons and states which are perfectly squeezed in the $\hat{x}$ quadrature. To make the codes experimentally realizable, the superposition in Eq. (10) has to be filtered (to keep the photon number finite) and a distribution of states has to be substituted for the sharp $\ket{\hat{x}=0}$ state (to account for imperfect squeezing). In the traditional form of the approximate codes, a $p$-dependent Gaussian filter is put into the sum in Eq. (36) and a Gaussian wavepacket is substituted for $\ket{\hat{x}=0}$. However, the choice of filter and starting state can be arbitrary. There are a handful of theoretical proposals [98–100] (see also Ref. [101] for an error analysis of GKP states), including one based on a clever use of phase estimation [20], to realize such approximate GKP states. GKP states are also useful in designing highly precise gates for other quantum computing architectures [102].
+
+The approximate code words are not perfectly orthogonal, so one must take into account the error coming from the non-orthogonality. Since the ideal GKP states have in- finite photon number, the approximate GKP states must contain a sufficiently high number of photons in order to manage such imperfections. An optimistic [20] estimate for this photon number is $\bar{n} = 4$, which uses the traditional form of the approximate code words and bounds the error probability coming from the non-orthogonality at about 1\% (Eq. (38) of Ref. [13]). Using the same approximate code words, a photon number of 2 implies a 9\% error bound. As a result, the traditional form of the approximate code words is expected to contain more photons than, e.g., the smallest ($\bar{n} = 2$) binomial code (2).
+
+However, the GKP code words can protect against a larger set of errors than the minimal binomial code. Due to the various choices of starting state and filter as well as due to the difficulty of comparing continuous correctable error sets to discrete ones, a detailed comparison of the relative capabilities of the GKP and binomial/cat classes of codes remains to be done.
 
 \section{Discussion}
 
@@ -333,6 +341,7 @@ The single-mode binomial codes require an explicit correction gate at every time
 
 The Fock state distributions of the binomial and cat codes are binomial and Poissonian, respectively. As the average number of photons is increased (larger N), both of these distributions approach a normal distribution, and so the binomial and cat codes asymptotically approach each other. 
 
+% TODO
 Furthermore, since no-jump evolution damps coherent states, $(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}$, the only necessary correction is a “re-pumping” of the cat states. This can be achieved using a discrete unitary correction operation (analogous to the binomial codes) or continuous non-linear amplification coming from an engineered reservoir [17, 18] (analogous to similar passive/autonomous error correction schemes [94, 95]). The basic principle of passive schemes is stabilization of a manifold of codewords as an attractive (stable) fixed-point of drives and dissipation so that the only remaining task is to track generalized parity for photon jumps [18]. The cat codes based on equal amplitude coherent state superpositions, cf. Eq. (31), are ‘natural’ candidates for these purposes since they require only gradual continuous inversion of the damping of the coherent state amplitude without active discrete correction stages. The two-leg cat has already been stabilized by reservoir engineering to achieve dominant two-photon drive and two-photon dissipation [96].
 
 \begin{figure}
