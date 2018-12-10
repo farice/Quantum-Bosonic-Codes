@@ -500,14 +500,26 @@ As an example, however, Niu et al show that when completing the set of symmetry 
 
 and one can verify using (\ref{eq:k-l}) that the code is robust against up to second order loss or gain and first order dephasing across all modes.
 
-\subsubsection{Importance of Bosonic Systems}
+\subsubsection{Comparisons}
+
+Now, we compare the two multi-mode codes detailed above.
+
+One fundamental difference is that pair-cat codes consist of infinite superpositions of Fock states while $\chi^{(2)}$ codes are finite-dimensional. As a result, only a finite number of photons can be lost for $\chi^{(2)}$ codes while pair-cat codes have a nonzero (albeit exponentially vanishing) probability of losing an arbitrary number of photons. 
+
+We stated that the $\chi^{(2)}$ binomial codes can correct more than one loss if one also knows the total number of photons lost (channel monitoring). Generalized pair-cat codes can introduce a notion of spacing $S$, which we did not detail (but see Section V of \cite{albert2018multimode}), that allows for up to $S$ loss errors in each mode using only knowledge given from error syndromes. Furthermore, it also turns out that pair-cat codes with $S=0$ can detect all loss and gain errors, if we allow three or more mode\cite{albert2018multimode}. This ability is certainly not feasible with the $\chi^{(2)}$ codes.
+
+Nevertheless, the two mode $\chi^{(2)}$ binomial codes can correct dephasing errors $n^l, l \leq N$ exactly, while pair-cat codes correct dephasing approximately.
+
+\section{Conclusion}
+
+\subsection{Importance of Bosonic Systems}
 
 The first one is fundamental: with each added qubit, several new decoherence channels are added. This multiplies the number of possible errors and requires measuring more error syndromes. The second is practical: it still seems extremely challenging to build a register of more than on the order of 10 qubits.
 
 Aside from improving lifetimes of quantum memories and quantum bits, bosonic mode quantum error correction is also useful for quantum teleportation [103, 104] and quantum communication, which consists of quantum state transfer and generation of high-fidelity entangled pairs of quantum bits between two distant nodes in a quantum network. We consider here a primitive task, namely the
 ‘pitch-and-catch’ scenario [24, 25, 105] for quantum state transfer which can be used for quantum repeaters [106, 107]. The scenario consists of (see Fig. 3) initialization of qubit A into a superposition of the ground and excited state, encoding this superposition into the logical code words of the send cavity via a unitary swap operation, letting the cavity state leak in a time-reversal symmetric manner (‘pitch’) into a transmission line or to other kind of a flying oscillator mode such that the inverse process into the receiving cavity (‘catch’) is most efficient [105, 108]. The transfer is finalized by decoding the received cavity state via a unitary swap operation to the qubit B. The full process corresponds to a quantum state transfer between the qubits through the modes. The remote physical qubits can be entangled by using the same protocol with the first swap operation being replaced with a CNOT-gate between the physical qubit A and the logical qubit of the cavity.
 
-\subsubsection{Future Developments}
+\subsection{Future Developments}
 
 Great strides are still necessary to properly compare the performance of bosonic error correcting codes. Recall the strong assumptions that were made when comparing single-mode codes in Section \ref{sec:perf}: the encoding, recovery, and decoding are perfect and that we can group codes by mean photon occupation number. Furthermore, there are obvious generalizations of this performance analysis to other multi-mode codes. It would be interesting to extend the analysis to two modes to determine the theoretically possible performance of pair-cat codes and $\chi^{(2)}$ binomial codes against photon loss, for example.
 
