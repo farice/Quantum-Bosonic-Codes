@@ -181,6 +181,7 @@ These equations have the interpretation of allowing us to determine to what orde
 First, we emphasize why we must establish new codes for bosonic systems in the first place. What if we used a simple encoding of $M$ qubits: $2^M$ Fock states cover photon numbers $0, 1, . . . , (2^{M - 1})$. Use binary representation: $\ket{n} = \ket{b_{M-1} b_{M-2} \cdots b_0 }$. The $j$th binary digit represents the eigenvalue $(1 + Z_j)/2$ for the corresponding physical qubit. E.g., $n=8$: $\ket{1000}$. Photon loss occurs, $a : \ket{1000} \mapsto \ket{0111}$. Hence, as the authors of \cite{michael2016new} note, QEC schemes based on models of independent single qubit errors cannot be easily transferred to this problem. Luckily, the stabilizer formalism provides useful intuition for codes we'll discuss
 
 \subsection{A Simple Example}
+\label{sec:simple}
 
 So, consider a simple bosonic code to protect against $\mathcal{E} = \{ I, \hat{a} \}$. Define $\ket{W_\uparrow} = \frac{\ket{0} + \ket{4}}{2}$, $\ket{W_\downarrow} = \ket{2}$. Hence, $\ket{E_1} = \ket{3}$ and $\ket{E_2} = \ket{1}$. We can distinguish states by measuring number and checking mod 4. Observe that both logical states have the same mean photon number i.e. $\bra{W_\sigma} \hat{n} \ket{W_\sigma} = 2, \forall \sigma$. Therefore, $\hat{a} : \alpha\ket{W_\uparrow} + \beta\ket{W_\downarrow} \mapsto \alpha \ket{E_1} + \beta \ket{E_2}$. We say that this condition implies that there is no "deformation".
 
@@ -271,27 +272,42 @@ However, if $\hat{a}^2$ is applied, then we evidently generate a logical bit fli
 
 Furthermore, since no-jump evolution damps coherent states, $(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}$, the only necessary correction is a “re-pumping” of the cat states. This can be achieved using a discrete unitary correction operation (analogous to the binomial codes) or continuous non-linear amplification coming from an engineered reservoir [17, 18] (analogous to similar passive/autonomous error correction schemes [94, 95]). The basic principle of passive schemes is stabilization of a manifold of codewords as an attractive (stable) fixed-point of drives and dissipation so that the only remaining task is to track generalized parity for photon jumps [18]. The cat codes based on equal amplitude coherent state superpositions, cf. Eq. (31), are ‘natural’ candidates for these purposes since they require only gradual continuous inversion of the damping of the coherent state amplitude without active discrete correction stages. The two-leg cat has already been stabilized by reservoir engineering to achieve dominant two-photon drive and two-photon dissipation [96].
 
-%\subsubsection{Multiple-Loss}
-%
-%Furthermore, we can generalize cat codes to the case of protecting against higher order loss errors $\hat{a}^l$. We develop the notation of \cite{albert2018multimode} in order to employ the same notation when analyzing multi-mode cat codes in Section \ref{sec:multi-cat}.
-%
 \subsection{Binomial Codes}
 
-\begin{itemize}
-\item Protect against $\mathcal{E} = \{I, a, a^2, \cdots, a^L, a^\dag, \cdots, (a^\dag)^G, N, \cdots, N^D \}$
-\item Consider
+Now, we consider a new class of codes known as "binomial codes" which were developed in  \cite{michael2016new}. Binomial codes are similar in spirit to the code we described in Section \ref{sec:simple}, since we use Fock states as our physical degrees of freedom to encode logical states.
+
+
+So, consider if we desire to protect against $\mathcal{E} = \{I, a, a^2, \cdots, a^L, a^\dag, \cdots, (a^\dag)^G, N, \cdots, N^D \}$
+
+The authors then share a simple class of codes of the following form
 
 $$
 \ket{W_{\uparrow / \downarrow}} = \frac{1}{\sqrt{2^N}} \sum_{ p\text{ even/odd}}^{[0, N+1]} \sqrt{\binom{N+1}{ p }} \ket{p(S+1)}
 $$
 
-with $S = L+G$, $N = \max\{L, G, 2D\}$.
+with spacing $S = L+G$ and maximum order $N = \max\{L, G, 2D\}$. Hence, we can see that the spacing between Fock states is given by $S+1$ and so we can distinguish errors by measuring photon number modulo $S+1$. Again, this works as a result of the spacing since a state can be shifted downward by repeated $\hat{a}$ $S$ times until becoming equivalent to the next Fock state originally below.
 
-\item Now, trust me that it works similarly to before!
-\item Mean photon numbers equal (no deformation) and QEC condition holds
-\item Can be shown by writing difference in $l$th moment of photon number of codewords as $l$th derivative of $(1+x)^{N+1}\vert_{x=-1}$ with $l \leq \max\{L, G\}$ up to a factor
-\item Measure photon number mod $S+1$
-\end{itemize}
+\subsubsection{Discrete Loss/Gain Errors}
+
+ Furthermore, they consider loss errors in the context of the discrete error correction conditions (\ref{eq:k-l}) and show that
+
+$$
+\bra{W_\uparrow}(\hat{a}^\dag)^l\hat{a}^l \ket{W_{\uparrow}} = \bra{W_\downarrow}(\hat{a}^\dag)^l\hat{a}^l \ket{W_{\downarrow}}
+$$ 
+
+for $l \leq \max\{L, G\}$. They show this by observing that $(\hat{a}^\dag)^l\hat{a}^l = \hat{n}^l$. Then, they write the difference in the $l$th moment of photon number of codewords as the $l$th derivative of $(1+x)^{N+1}\vert_{x=-1}$ with $l \leq \max\{L, G\}$ (up to a factor) by using the binomial formula. Furthermore, since we're using orthonormal Fock states as our basis it's clear that
+
+$$
+\bra{W_\sigma}(\hat{a}^\dag)^l\hat{a}^m \ket{W_{\sigma'}} = 0
+$$  
+
+for $l, m \leq \max\{L, G\}, l \leq m$. So, the discrete error correction conditions are obeyed.
+
+Hence, since we show that the $l$th moment of $\ket{n}$ is equivalent for both logical code words, it also follows that the mean photon number is equivalent for both code words given that the mean is the first moment. So, there is no deformation by measuring the mean photon number.
+
+\subsubsection{Discrete Dephasing Errors}
+
+\subsubsection{Continuous Errors}
 
 The Fock state distributions of the binomial and cat codes are binomial and Poissonian, respectively. As the average number of photons is increased (larger N), both of these distributions approach a normal distribution, and so the binomial and cat codes asymptotically approach each other. 
 
