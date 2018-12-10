@@ -246,16 +246,6 @@ $$
 
 is nonzero by virtue of the $\mu$-dependence of the normalization factors. Hence, similarly, this difference goes to zero as $\alpha \rightarrow \infty$. So, according to (\ref{eq:k-l}), cat states are potentially immune from any order of dephasing.
 
-Now, we can use the approximate quantum error correction conditions we developed in the previous section. Observe that from equation (\ref{eq:kraus}), $E_1 = \Big(\frac{\gamma}{1-\gamma}\Big)^{1 / 2} \hat{a} (1 - \gamma)^{\hat{n} / 2} = \hat{a} \gamma^{1/2} (1- \gamma)^{\hat{n}}$. Hence, for all $\Pi$,
-
-\begin{align*}
-&\bra{C^{\alpha, \Pi}_{\uparrow}}E_1E_1^\dag\ket{C^{\alpha, \Pi}_{\uparrow}} - \bra{C^{\alpha, \Pi}_{\downarrow}}	E_1E_1^\dag\ket{C^{\alpha, \Pi}_{\downarrow}}	\\
-&\approx \kappa\delta t (\bra{C^{\alpha, \Pi}_{\uparrow}}\hat{n}\ket{C^{\alpha, \Pi}_{\uparrow}} - \bra{C^{\alpha, \Pi}_{\downarrow}}	\hat{n}\ket{C^{\alpha, \Pi}_{\downarrow}}\\
-&\approx 4 \kappa \delta t |\alpha|^2  \exp(-|\alpha|^2)(\sin |\alpha|^2 + \cos|\alpha|^2)
-\end{align*}
-
-and so the approximation quantum error correction conditions (\ref{eq:aqec}) are violated when this is nonzero, since there exists uncorrectable errors of order $O(\kappa \delta t)$. Observe that the term goes to zero as $\alpha\rightarrow \infty$, however. Hence, to suppress these errors, we may require a large $\alpha$. Recalling that the $\alpha$ label for a coherent state indicates the mean photon number for the Poissonian distribution of number states that $\ket{\alpha}$ represent, we see that this potential increase in average photon number relative to other codes can then introduces a greater error rate.
-
 \subsubsection{Discrete Loss Errors}
 
 Now, we use the relations above (\ref{eq:cat-rels}) to specify action of $\hat{a}$ on our cat code states.
@@ -269,26 +259,36 @@ Now, we use the relations above (\ref{eq:cat-rels}) to specify action of $\hat{a
 
 Hence, we see that application of $\hat{a}$ on an even parity ($\Pi = 0$) cat state transforms to the odd parity subspace ($\Pi = 1$) while also creating a logical bit flip ($\uparrow \leftrightarrow \downarrow$). On the other hand, $\hat{a}$ transforms an odd parity state to an even parity state without the logical bit flip. Therefore, to the order that the approximate quantum error conditions (\ref{eq:aqec}) are satisfied, the quantum information is preserved and, as long as photon jumps are detected and recorded, there is no further correction needed. In other words, the limiting factor of the accuracy of cat codes is independent of action of detected single-loss $\hat{a}$.
 
-However, if $\hat{a}^2$ is applied, then we evidently generate a logical bit flip while preserving parity. Therefore, our parity measurement will indicate no change in parity while a non-trivial transformation takes place. Hence, $\hat{a}^2$ is non-correctable.
+However, if $\hat{a}^2$ is applied, then we evidently generate a logical bit flip while preserving parity. Therefore, our parity measurement will indicate no change in parity despite a non-trivial transformation taking place. Hence, $\hat{a}^2$ is non-correctable.
 
 \subsubsection{Dephasing Errors}
 
 As noted above, dephasing errors are suppressed to the same order that the normalization constants for the $p$th moment of photon number are equivalent for each of the logical states. In particular, dephasing errors are suppressed exponentially in $\alpha^2$.
+
+\subsubsection{Continuous Errors}
+
+Now, we can use the approximate quantum error correction conditions we developed in the previous section. Observe that from equation (\ref{eq:kraus}), $E_1 = \Big(\frac{\gamma}{1-\gamma}\Big)^{1 / 2} \hat{a} (1 - \gamma)^{\hat{n} / 2} = \hat{a} \gamma^{1/2} (1- \gamma)^{\hat{n}}$. Hence, for all $\Pi$,
+
+\begin{align*}
+&\bra{C^{\alpha, \Pi}_{\uparrow}}E_1E_1^\dag\ket{C^{\alpha, \Pi}_{\uparrow}} - \bra{C^{\alpha, \Pi}_{\downarrow}}	E_1E_1^\dag\ket{C^{\alpha, \Pi}_{\downarrow}}	\\
+&\approx \kappa\delta t (\bra{C^{\alpha, \Pi}_{\uparrow}}\hat{n}\ket{C^{\alpha, \Pi}_{\uparrow}} - \bra{C^{\alpha, \Pi}_{\downarrow}}	\hat{n}\ket{C^{\alpha, \Pi}_{\downarrow}}\\
+&\approx 4 \kappa \delta t |\alpha|^2  \exp(-|\alpha|^2)(\sin |\alpha|^2 + \cos|\alpha|^2)
+\end{align*}
+
+and so the approximation quantum error correction conditions (\ref{eq:aqec}) are violated when this is nonzero, since there exists uncorrectable errors of order $O(\kappa \delta t)$ and we are consider single-loss errors. Observe that the term goes to zero as $\alpha\rightarrow \infty$, however. Hence, to suppress these errors, we may require a large $\alpha$. Recalling that the $\alpha$ label for a coherent state $\ket{\alpha}$ indicates the mean photon number for the Poissonian distribution of number states, we see that this potential increase in average photon number relative to other codes can then introduces a greater error rate.
 
 \subsection{Binomial Codes}
 
 Now, we consider a new class of codes known as "binomial codes" which were developed in  \cite{michael2016new}. Binomial codes are similar in spirit to the code we described in Section \ref{sec:simple}, since we use Fock states as our physical degrees of freedom to encode logical states.
 
 
-So, consider if we desire to protect against $\mathcal{E} = \{I, a, a^2, \cdots, a^L, a^\dag, \cdots, (a^\dag)^G, N, \cdots, N^D \}$
-
-The authors then share a simple class of codes of the following form
+So, consider if we desire to protect against $\mathcal{E} = \{I, a, a^2, \cdots, a^L, a^\dag, \cdots, (a^\dag)^G, N, \cdots, N^D \}$. The authors then suggest a simple class of codes of the following form
 
 $$
 \ket{W_{\uparrow / \downarrow}} = \frac{1}{\sqrt{2^N}} \sum_{ p\text{ even/odd}}^{[0, N+1]} \sqrt{\binom{N+1}{ p }} \ket{p(S+1)}
 $$
 
-with spacing $S = L+G$ and maximum order $N = \max\{L, G, 2D\}$. Hence, we can see that the spacing between Fock states is given by $S+1$ and so we can distinguish errors by measuring photon number modulo $S+1$. Again, this works as a result of the spacing since a state can be shifted downward by repeated $\hat{a}$ $S$ times until becoming equivalent to the next Fock state originally below.
+with spacing $S = L+G$ and maximum order $N = \max\{L, G, 2D\}$. Hence, we can see that the spacing between Fock states is given by $S+1$ and so we can distinguish errors by measuring photon number modulo $S+1$. Again, this works as a result of the spacing since a state can be shifted downward by repeated application of $\hat{a}$ up to $S$ times until becoming equivalent to the next Fock state originally below.
 
 \subsubsection{Discrete Loss/Gain Errors}
 
