@@ -334,6 +334,7 @@ Observe that from above the "quantum error correction matrix" as defined by the 
 Now, if we consider dephasing errors as well, the error correction matrix is no longer necessarily diagonal but is still Hermitian (as required). For that reason, to detect and recover those errors one needs to make projective measurements in an orthonormalized basis, as with the code in Section \ref{sec:simple}. After a detection of an error, the original state is recovered by a unitary operation performing a state transfer between the subspaces of the error and logical code words.
 
 \subsubsection{Continuous Errors}
+\label{sec:cat-cont}
 
 Refer back to the approximate quantum error conditions (\ref{eq:aqec}). Both $B_l^\dag B_l$ and $B_l^\dag C_l$ up to accuracy of $(\kappa \delta t)^L$ can be written as a polynomial of $\hat{n}$ with the highest degree of $L$ \cite{michael2016new}. From above, the binomial code words protected against $L$ photon losses have equal expectation value of $hat{n}^l$, for all $l \leq L$ and for both of the code words, which implies that approximate quantum error conditions are satisfied for them.
 
@@ -381,9 +382,11 @@ First, when considering average photon number $\bar{n}_{\text{code}}$ for single
 
 and hence in this sense binomial $>$ cat $>$ gkp. We observed this ordering originally by considering the photon number pump required to satisfy the approximate quantum error correction conditions to order $\kappa \delta t$.
 
-Second, we noted that single-mode binomial codes and GKP codes require an explicit correction gate at every timestep whether or not a photon jump has occurred.  Furthermore, the binomial codes operate in a restricted Hilbert space, which could be beneficial for the practical construction of the unitary operators required for error diagnosis and recovery. This particularly applies to errors involving $\hat{a}^\dag$ operators, whose operation on cat codes is less straightforward than $\hat{a}$ operators alone.
+Second, we noted that single-mode binomial codes and GKP codes require an explicit correction gate at every timestep whether or not a photon jump has occurred. Intuitively, it seems as though a "passive" scheme as described in Section \ref{sec:cat-cont} where one can simply re-pump states continuously and observe whether photon loss events occur is simpler to realize physically. This is because in one small time step $\delta t$ one is only required to record an error syndrome rather than dynamically react to it, applying a unitary gate as required.
 
-The Fock state distributions of the binomial and cat codes are binomial and Poissonian, respectively. As the average number of photons is increased (larger N), both of these distributions approach a normal distribution, and so the binomial and cat codes asymptotically approach each other. 
+On the other hand, the binomial codes operate in a restricted Hilbert space, which may be beneficial for the practical construction of the unitary operators required for error diagnosis and recovery. This particularly applies to errors involving $\hat{a}^\dag$ operators, whose operation on cat codes is less straightforward than $\hat{a}$ operators alone.
+
+Also, note that the Fock state distributions of the binomial and cat codes are binomial and Poissonian, respectively. Hence, as the average number of photons is increased (larger $N$), both of these distributions approach a normal distribution, and so the binomial and cat codes asymptotically approach each other. 
 
 \begin{figure}
 \centering
