@@ -365,7 +365,7 @@ The Gottesman, Kitaev, and Preskill (GKP) codes \cite{gottesman2001encoding} are
   
   $$\hat{D}(\alpha) = \exp(\alpha \hat{a}^\dag - \alpha^* \hat{a})$$
   
-  is the displacement operator and $\ket{\hat{x} = 0}$ is the starting position eigenstate.By s considering the states in position space, we can show that effective spacing between the two logical states is $S=\sqrt{\pi}$. This results holds similarly for in momentum ($\hat{p}$) space via Fourier transform of (\ref{eq:gkp}). Expectedly, position and momentum shifts $\exp(-iu\hat{p})\exp(-iv\hat{x})$ with $|u|, |v| \leq \sqrt{\pi}/2$ are correctable. Furthermore, the GKP codes can correct any error operators expandable in the basis of correctable shifts. It turns out that one can expand photon loss $\ket{a}$ and other errors (for small enough $\kappa \delta t$) to show that one can satisfy the approximate quantum error corrections for photon loss/gain and dephasing errors \cite{michael2016new}.
+  is the displacement operator and $\ket{\hat{x} = 0}$ is the starting position eigenstate. By considering the states in position space, we can show that effective spacing between the two logical states is $S=\sqrt{\pi}$. This results holds similarly for in momentum ($\hat{p}$) space via Fourier transform of (\ref{eq:gkp}). Expectedly, position and momentum shifts $\exp(-iu\hat{p})\exp(-iv\hat{x})$ with $|u|, |v| \leq \sqrt{\pi}/2$ are correctable. Furthermore, the GKP codes can correct any error operators expandable in the basis of correctable shifts. It turns out that one can expand photon loss $\ket{a}$ and other errors (for small enough $\kappa \delta t$) to show that one can satisfy the approximate quantum error corrections for photon loss/gain and dephasing errors \cite{michael2016new}.
   
 The idealistic code words of (\ref{eq:gkp}) contain both infinite mean photon number and infinite number of states which are perfectly squeezed in the $\hat{x}$ lattice. To make the codes empirically realizable, we must filter the superposition in the superposition in the displacement operator and a distribution of states has to be substituted for the sharp $\ket{\hat{x}=0}$ state. In the traditional form of the approximate codes, a $p$-dependent Gaussian envelope is put into the sum in (\ref{eq:gkp}) and a Gaussian wavepacket is substituted for $\ket{\hat{x}=0}$. 
 
@@ -406,7 +406,7 @@ Also, note that the Fock state distributions of the binomial and cat codes are b
 \subsection{Performance Comparisons}
 \label{sec:perf}
 
-In \cite{albert2017performance}, Albert et al consider "channel fidelity", $F_\mathcal{E}$,  as numerically tractable proxy for evaluating single-mode bosonic code protection capabilities. The motivation is that the noise model operators are not well behaved whereas optimal recovery for each code can readily be computed by utilizing a semi-definite program when considering channel fidelity. Furthermore, if we assume that our noise is completely described by the lossy bosonic channel (i.e. the encoding, recovery, and decoding are perfect), then channel fidelity essentially describes the robustness of entanglement in the presence of the noisy bosonic channel. Specifically, it is the measure of overlap between the initial state and the final state when considering an initial Bell state such that only the first qubit is acted on by the noise channel.
+In \cite{albert2017performance}, Albert et al. consider "channel fidelity", $F_\mathcal{E}$,  as numerically tractable proxy for evaluating single-mode bosonic code protection capabilities. The motivation is that the noise model operators are not well behaved whereas optimal recovery for each code can readily be computed by utilizing a semi-definite program when considering channel fidelity. Furthermore, if we assume that our noise is completely described by the lossy bosonic channel (i.e. the encoding, recovery, and decoding are perfect), then channel fidelity essentially describes the robustness of entanglement in the presence of the noisy bosonic channel. Specifically, it is the measure of overlap between the initial state and the final state when considering an initial Bell state such that only the first qubit is acted on by the noise channel.
 
 \begin{figure}[H]
 \label{fig:perf}
@@ -418,7 +418,7 @@ Figure \ref{fig:perf} summarizes the performance of the optimal code from each f
 
 The numerical results show that codes designed to correct dominant errors at small $\gamma$ do not necessarily lead to good codes at larger $\gamma$. In our case, the cat and binomial codes protect exactly from the first few loss errors by making sure there is adequate Fock state spacing $S$ between the states, as described previously. Both cat and bin allow one to increase $S$ arbitrarily, while gkp codes have $S \in \{0, 1\}$ \cite{albert2017performance}, depending on whether their lattice is shifted from the origin or not. Nevertheless, the gkp strategy of suppressing all errors approximately seems to be the most effective.
 
-Along similar lines, in the paper \cite{noh2018improved} Noh et al prove that the GKP codes achieve quantum capacity of Gaussian loss channels up to at most a constant gap from an upper bound of the quantum capacity.
+Along similar lines, in the paper \cite{noh2018improved} Noh et al. prove that the GKP codes achieve quantum capacity of Gaussian loss channels up to at most a constant gap from an upper bound of the quantum capacity.
 
 \subsection{Multi-Mode Extensions}
 
@@ -426,7 +426,7 @@ Here we briefly summarize recent results based upon these fundamental single-mod
 
 \subsubsection{Pair-Cat Codes}\label{sec:multi-cat}
 
-The pair-cat codes developed in \cite{albert2018multimode} by Albert et al opt to use an additional mode not necessarily to improve error-correction capabilities over traditional cat codes (though with greater than two modes this is plausible), but rather to make strides toward physical realizability. In particular, the scheme provides a drastic reduction of the order of the nonlinearity required for realization. 
+The pair-cat codes developed in \cite{albert2018multimode} by Albert et al. opt to use an additional mode not necessarily to improve error-correction capabilities over traditional cat codes (though with greater than two modes this is plausible), but rather to make strides toward physical realizability. In particular, the scheme provides a drastic reduction of the order of the nonlinearity required for realization. 
 
 The code has leading uncorrectable error $\hat{a}\hat{b}$ where $\hat{a}$ and $\hat{b}$ are the loss operators that act on the first and second mode, respectively. Hence, this replaces the uncorrectable error $\hat{a}^2$ for the single-mode cat code, so the code subspaces are of similar quality.
 
@@ -434,7 +434,7 @@ Furthermore, this scheme allows for one to perform discrete QEC techniques (i.e.
 
 Recall that with cat codes we can use continuous "pumping" to squelch dephasing and discrete photon loss recording to protect from loss. Nevertheless, it turns out that performing both simultaneously is impossible with current techniques \cite{albert2018multimode}. This is related to the fact that the entangling gate for measurement is generated by a cross-Kerr interaction which only commutes with the single-mode jump operator $J_1 \sim \hat{a}^4$ (from equation \ref{eq:single-jump}) at discrete time points. Hence, the dissipation due to $J$ must be turned off during measurement. As it turns out, the fact that the pair-cat code can use photon number difference as opposed to parity as syndrome allows for one to find tune the parameters of the two-mode cross-Kerr interaction to commute with the pair-cat jump operator $J_2 \sim \hat{a}^2\hat{b}^2$.
 
-Furthermore, Albert et al propose a continuous error correction scheme against loss for the pair-cat codes using Superconducting Nonlinear Asymmetric Inductive eLements (SNAILs)\cite{frattini20173}. These require a lower-order nonlinearity than the array of Josephson junctions required for continuous error correction against photon loss in the single-mode case.
+Furthermore, Albert et al. propose a continuous error correction scheme against loss for the pair-cat codes using Superconducting Nonlinear Asymmetric Inductive eLements (SNAILs)\cite{frattini20173}. These require a lower-order nonlinearity than the array of Josephson junctions required for continuous error correction against photon loss in the single-mode case.
 
 Finally, we observe that $J_2$ spreads out the quartic stabilizing nonlinearity across two modes. This provides the advantage of requiring less photons per mode to have a comparable protection against dephasing and so a slightly lower probability of the leading uncorrectable loss error. Figure \ref{fig:cat} summarizes differences between the codes.
 
@@ -450,7 +450,7 @@ Finally, we observe that $J_2$ spreads out the quartic stabilizing nonlinearity 
 
 As with pair-cat codes, a motivation for developing a new code is that single-mode cat codes’ universal gate set relies on induced four-wave mixing interactions in Josephson junctions, which are much stronger than optical four-wave mixing in Kerr media. Hence, $\chi^{(2)}$ codes (which are more general than the $\chi^{(2)}$ binomial codes we focus on here) seek to develop quantum computation using only $\chi^{(2)}$ interactions for coherent photon conversion together with linear-optics transformations \cite{niu2018hardware} since it is a lower-order nonlinearity and hence potentially stronger than four-wave mixing.
 
-To build this code Niu et al establish a symmetry-operator framework that leverages the symmetry of the physical subspace supporting the logical codewords and the symmetry of the measurable syndromes, which we describe below. Ultimately, they show that It is worth emphasizing that the $\chi^{(2)}$ binomial code is the first Fock-basis bosonic QEC code that can correct $N$  photon-loss errors using $O(N)$ photons for its encoding. In fact, all of the codes we have discuss previously require encoding with $O(N^2)$ photons. However, this code requires channel-monitoring resources, which the other studied codes do not, that is used to de-termine the number of photons that have been lost or gained. Hence, this highlights the importance of channel monitoring for the extra error-correction power it can provide.
+To build this code Niu et al. establish a symmetry-operator framework that leverages the symmetry of the physical subspace supporting the logical codewords and the symmetry of the measurable syndromes, which we describe below. Ultimately, they show that It is worth emphasizing that the $\chi^{(2)}$ binomial code is the first Fock-basis bosonic QEC code that can correct $N$  photon-loss errors using $O(N)$ photons for its encoding. In fact, all of the codes we have discuss previously require encoding with $O(N^2)$ photons. However, this code requires channel-monitoring resources, which the other studied codes do not, that is used to de-termine the number of photons that have been lost or gained. Hence, this highlights the importance of channel monitoring for the extra error-correction power it can provide.
 
 Now, we consider the notion of "symmetry operators". First, we consider $N$-pump-photon 3-mode subspace $\mathcal{H}_N$ and observe that all states $\ket{\psi} = \sum_{n=0}^N c_n \ket{n, n, N-n} \in \mathcal{H}_N$ obey the following relations
 
@@ -491,7 +491,7 @@ In the case of the $\chi^{(2)}$ binomial code, one enforces the physical-subspac
 
 The important aspect we wish to emphasize here is that this symmetry-operator formalism establishes a systematic framework for finding new QEC codes for available measurement schemes and physical subspace choices.
 
-As an example, however, Niu et al show that when completing the set of symmetry operators, one finds that the simplest case is given by logical states
+As an example, however, Niu et al. show that when completing the set of symmetry operators, one finds that the simplest case is given by logical states
 
 \begin{align*}
 	\ket{B_{\uparrow}} &\sim \ket{0, 0, 3} + \sqrt{3}\ket{2, 2, 1}\\
@@ -516,7 +516,7 @@ Nevertheless, the two mode $\chi^{(2)}$ binomial codes can correct dephasing err
 
 There are many potential advantages to bosonic systems. A clear one is that with each added qubit, several new decoherence channels are added. This multiplies the number of possible errors and requires measuring more error syndromes. Hence, it may be simpler to add physical degrees of freedom using bosonic continuous variable systems. Practically, too, it still seems extremely challenging to build a register of more than on the order of 10 qubits. Hence, bosonic systems may have strong use improving lifetimes of quantum memories.
 
-Past quantum memory, bosonic mode quantum error correction is also useful for quantum teleportation and quantum communication \cite{michael2016new}, which consists of quantum state transfer and generation of high-fidelity entangled pairs of quantum bits between two distant nodes in a quantum network. In \cite{michael2016new} Michael et al consider a 'pitch-and-catch' scenario for quantum state transfer which can be used for quantum repeaters. They show that simple bosonic codes can greatly increase the fidelity of quantum communication and remote entanglement between hardware modules by being utilized to protect errors from this protocol.
+Past quantum memory, bosonic mode quantum error correction is also useful for quantum teleportation and quantum communication \cite{michael2016new}, which consists of quantum state transfer and generation of high-fidelity entangled pairs of quantum bits between two distant nodes in a quantum network. In \cite{michael2016new} Michael et al. consider a 'pitch-and-catch' scenario for quantum state transfer which can be used for quantum repeaters. They show that simple bosonic codes can greatly increase the fidelity of quantum communication and remote entanglement between hardware modules by being utilized to protect errors from this protocol.
 
 \subsection{Future Developments}
 
