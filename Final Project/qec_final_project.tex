@@ -73,15 +73,15 @@
 \begin{document}
 \maketitle
 
-Quantum error correction is necessary to achieve fault tolerant quantum communication. In other words, one must implement a scheme to encode information redundantly into physical degrees of freedom so that information can be preserved in the presence of noise. One such scheme is continuous variable quantum information processing using bosonic modes \cite{braunstein1998error, braunstein2005quantum, niset2008experimentally, aoki2009quantum, lloyd1998analog, lassen2010quantum}. In this case, one encodes information in the space corresponding to the occupation number of a harmonic oscillator. Hence, one can express the code subspace in terms of number states $\{\ket{n}\}^\infty_{n=0}$ \cite{michael2016new}, position and momentum eigenstates $\{\ket{x}\}_{x\in\RR}$ and $\{\ket{p}\}_{p\in\RR}$  \cite{gottesman2001encoding}, or a few coherent states $\{\ket{\alpha}\}_{\alpha\in S}$ (for some finite set $S$) \cite{cochrane1999macroscopically}.
+Quantum error correction is necessary to achieve fault tolerant quantum computation. In other words, one must implement a scheme to encode information redundantly into physical degrees of freedom so that information can be preserved in the presence of noise. One such scheme is continuous variable quantum information processing using bosonic modes \cite{braunstein1998error, braunstein2005quantum, niset2008experimentally, aoki2009quantum, lloyd1998analog, lassen2010quantum}. In this case, one encodes information in the space corresponding to the occupation number of a harmonic oscillator. Hence, one can express the code subspace in terms of number states $\{\ket{n}\}^\infty_{n=0}$ \cite{michael2016new}, position and momentum eigenstates $\{\ket{x}\}_{x\in\RR}$ and $\{\ket{p}\}_{p\in\RR}$  \cite{gottesman2001encoding}, or a few coherent states $\{\ket{\alpha}\}_{\alpha\in S}$ (for some finite set $S$) \cite{cochrane1999macroscopically}.
 
-The first studied continuous variable scheme utilizing bosonic modes is known as the two-mode “dual-rail” encoding published in 1995 \cite{chuang1995simple}. Nowadays, there are several bosonic codes being evaluated in the fault tolerant quantum computation race. In this review, we'll consider a few of the most popular contenders: first, we'll develop a practical bosonic error model. Next, we'll study three popular single mode codes with impressive protection capabilities with respect to this model. Then, we'll consider the work of \cite{albert2017performance} to evaluate the performance of these codes and take into account some theoretical considerations. Finally, we'll consider hardware-efficient multi-mode extensions which are notable for their progress toward physical realizability and place these results in the context of the emerging field of bosonic quantum error correcting codes.
+The first studied continuous variable scheme utilizing bosonic modes is known as the two-mode “dual-rail” encoding published in 1995 \cite{chuang1995simple}. Nowadays, there are several bosonic codes being evaluated in the fault tolerant quantum computation race. In this review, we'll consider a few of the most popular contenders: first, we'll develop a practical bosonic error model. Next, we'll study three popular single mode codes with impressive protection capabilities with respect to this model. Then, we'll consider the work of \cite{albert2017performance} to evaluate the performance of these codes and take into account some theoretical considerations. Finally, we'll consider hardware-efficient multi-mode extensions which are notable for their progress toward physical realizability, and place these extensions in the context of the emerging field of bosonic quantum error correcting codes.
 
 \section{Introduction}
 
 \subsection{Definitions}
 
-The generic task of quantum error correction is to find two logical code words---a qubit---embedded in a large Hilbert space. The code words are required to be robust such that if any one of the single, independent errors $E_{l,k} \in \mathcal{E}$ occurs, no quantum information is lost and any quantum superposition of the logical code words can be faithfully recovered. This is equivalent to finding two logical code words $\ket{W_\sigma}$, where $\sigma = \uparrow, \downarrow$, that satisfy the quantum error correction criteria, known also as the Knill-Laflamme conditions \cite{nielsen2002quantum}.
+The generic task of quantum error correction is to find two logical code words, a qubit, that lives in a large Hilbert space. The code words are required to be "robust" such that if any one of the single, independent errors $E_{l,k} \in \mathcal{E}$ occurs, no quantum information is lost. Hence, any quantum superposition of the logical code words can be faithfully recovered. This is equivalent to finding two logical code words $\ket{W_\sigma}$, where $\sigma = \uparrow, \downarrow$, that satisfy the quantum error correction criteria, known also as the Knill-Laflamme conditions \cite{nielsen2002quantum}.
 
 \begin{align}
 \label{eq:k-l}
@@ -90,7 +90,7 @@ The generic task of quantum error correction is to find two logical code words--
 
 for all $E_{l,k} \in \mathcal{E}$ such that $\alpha_{l,k}$ are entries of a Hermitian matrix and independent of the logical words. The independence of entries $\alpha_{l,k}$ from the logical code words and the structure of the non-diagonal entries guarantee that the different errors are distinguishable and correctable.
 
-Notationally, we'll refer to a harmonic oscillator's non-Hermitian creation and annihilation operators as $a^\dag$ and $a$, respectively. Furthermore, we define $\hat{n} := \hat{a}^{\dag }\hat{a}$. Recall the relations, with respect to Fock states $\ket{n}$,
+Notationally, we'll refer to a harmonic oscillator's non-Hermitian creation and annihilation operators as $a^\dag$ and $a$, respectively. Furthermore, we define $\hat{n} := \hat{a}^{\dag }\hat{a}$. Recall the following relations, with respect to Fock states $\ket{n}$,
 
 \begin{align*}
 \hat{a}^{\dagger }|n\rangle &={\sqrt {n+1}}|n+1\rangle, \qquad \hat{a}\ket{n}={\sqrt {n}}|n-1\rangle \\
@@ -120,13 +120,14 @@ It's especially important to consider a practical bosonic error model before des
 
 We can describe this using the pure-loss channel, which is a model for broadband-line and free-space communication. The bosonic pure-loss channel is the most common incoherent error process in optical and microwave cavities \cite{albert2017performance}. The second most common error is cavity dephasing, which is caused by fluctuations in the cavity frequency. Optical cavities have to be actively stabilized to fix the frequency, but the effects of these fluctuations are small relative to effects of energy loss, particularly in microwave cavities. 
 
-The bosonic pure-loss channel is given by $N_\gamma = \exp(\kappa t D)$ ($\gamma$ defined below) with Lindblad superoperator $D(\cdot) = \hat{a} \hat{a}^\dag - 1/2 \{ \hat{n} , \cdot \}$, excitation loss rate $\kappa$,  and time interval $t$ \cite{albert2017performance}. Another way to represent this is in the Kraus representation with Kraus operators
+The bosonic pure-loss channel is given by $N_\gamma = \exp(\kappa t D)$ (loss rate $\gamma$ defined below) with Lindblad superoperator $D(\cdot) = \hat{a} \hat{a}^\dag - 1/2 \{ \hat{n} , \cdot \}$, excitation loss rate $\kappa$,  and time interval $t$ \cite{albert2017performance}. Another way to represent this is in the Kraus representation with Kraus operators
 
 \begin{align}
 \label{eq:kraus}
 E_l &= \Big(\frac{\gamma}{1-\gamma}\Big)^{l / 2} \frac{\hat{a}^l}{\sqrt{l!}}(1 - \gamma)^{\hat{n} / 2}
 \end{align}
-where
+
+where "loss rate"
 
 \begin{align}
 \label{eq:gamma}
@@ -145,7 +146,7 @@ Observe that this channel does not contain the identity as a Kraus operator when
 
 Instead, one can expand each error operator in powers of $\kappa \delta t$ (where again $\delta t$ is a small finite time interval) and choose to correct up to a given highest order. This is termed "approximate quantum error correction" \cite{mandayam2012towards}. It is then enough to satisfy the quantum error correction criteria (\ref{eq:k-l}) only approximately such that the original state can be recovered with an accuracy given by the same highest order in $\kappa \delta t$ \cite{michael2016new}.
 
-So, if we perform a Taylor series expansion of each of the Kraus operators $E_l$ above and consider correcting both the photon loss and back-action contributions up to order $O[(\kappa \delta t)^L]$ for some specified $L$, then we can derive a new set of approximate error correction conditions. The full derivation is contained in \cite{michael2016new} but we summarize the results below which we'll utilize in our analysis in the next sections.
+So, if we perform a Taylor series expansion of each of the Kraus operators $E_l$ above and consider correcting both the photon loss and back-action contributions up to order $O[(\kappa \delta t)^L]$ for some specified $L$, then we can derive a new set of approximate error correction conditions. The intention is that this should be analogous to being able to correct loss errors to the $L$th order in discrete time. The full derivation is contained in \cite{michael2016new} but we summarize the results below which we'll utilize in our analysis in the next sections.
 
 First, observe that Kraus operators $E_{l>L}$ can be ignored since they have the effect of order at least $L+1$. So, denote $E_{\mu, l}$ as the $\mu$th entry of the expansion of (\ref{eq:kraus}) in powers of $(\kappa\delta t)^{1/2}$. Now, for convenience sake, expand each Kraus operator $E_{l \leq L}$ into two contributions
 
@@ -180,7 +181,7 @@ These equations have the interpretation of allowing us to determine to what orde
 
 \section{Single Mode Codes}
 
-First, we emphasize why we must establish new codes for bosonic systems in the first place. Perhaps, we can instead use a simple encoding of $M$ qubits: $2^M$ Fock states cover photon numbers $0, 1, . . . , (2^{M - 1})$. Hence, we can simply use a Fock state's binary representation, $\ket{n} = \ket{b_{M-1} b_{M-2} \cdots b_0 }$. Then, we can allow the $j$th binary digit represents the eigenvalue $(1 + Z_j)/2$ for the corresponding physical qubit. For example, for Fock state $n=16$: $\ket{10000}$. However, now consider if photon loss occurs (which we've noted to be frequent): $\hat{a}\ket{10000} \mapsto \ket{01111}$--$\hat{a}$ generates 4 correlated errors. Hence, as the authors of \cite{michael2016new} note, QEC schemes based on models of independent single qubit errors cannot be easily transferred to this problem. Luckily, the stabilizer formalism provides useful intuition for codes we'll discuss (see Section \ref{sec:multi-binom}).
+First, we emphasize why we must establish new codes for bosonic systems in the first place. Perhaps, we can instead use a simple encoding of $M$ qubits: $2^M$ Fock states cover photon numbers $0, 1, . . . , (2^{M - 1})$. Hence, we can simply use a Fock state's binary representation, $\ket{n} = \ket{b_{M-1} b_{M-2} \cdots b_0 }$. Then, we can allow the $j$th binary digit represents the eigenvalue $(1 + Z_j)/2$ for the corresponding physical qubit. For example, for Fock state $n=16$: $\ket{10000}$. However, now consider if photon loss occurs (which we've noted to be frequent): $\hat{a}\ket{10000} = \ket{01111}$ implying that $\hat{a}$ generates 4 correlated errors! Hence, as the authors of \cite{michael2016new} note, QEC schemes based on models of independent single qubit errors cannot be easily transferred to this problem. Luckily, the stabilizer formalism provides useful intuition for codes we'll discuss (see Section \ref{sec:multi-binom}).
 
 \subsection{A Simple Example}
 \label{sec:simple}
@@ -203,7 +204,7 @@ $$
 \ket{W_\downarrow} = \frac{\ket{3} + \sqrt{3}\ket{9}}{2}
 $$
 
-and measured the photon number modulo 3, then we'd say that syndrome 0 indicates no error, syndrome 1 indicates a single loss, and syndrome indicates double loss.
+and measured the photon number modulo 3, then we'd say that syndrome 0 indicates no error, syndrome 1 indicates a single loss, and syndrome 2 indicates double loss.
 
  Furthermore, observe that action by $n$ "dephases" in the sense that, after transformation, the relative phases of the Fock states are transformed. This action leads to a superposition of codewords and error words. We can detect this dephasing error by making projective measurement onto the logical codeword basis and if the measurement eigenvalue is negative and no photon loss is detected, then we can perform the unitary state transfer $\ket{E_\sigma} \leftrightarrow \ket{W_\sigma}$ as prescribed above.
  
