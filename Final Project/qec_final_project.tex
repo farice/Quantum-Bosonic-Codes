@@ -127,9 +127,11 @@ The bosonic pure-loss channel is given by $N_\gamma = \exp(\kappa t D)$ ($\gamma
 E_l &= \Big(\frac{\gamma}{1-\gamma}\Big)^{l / 2} \frac{\hat{a}^l}{\sqrt{l!}}(1 - \gamma)^{\hat{n} / 2}
 \end{align}
 where
-$$
-\gamma = 1 - \exp(- \kappa t)
-$$
+
+\begin{align}
+\label{eq:gamma}
+	\gamma = 1 - \exp(- \kappa t)
+\end{align}
 
 This is derived by integrating over all the possible photon loss "jump" times of exactly $l$ photon jumps during a small finite time interval $\delta t$ \cite{chuang1997bosonic}, similar in spirit to the Feynmann path integral. Therefore, the channel can be described as 
 
@@ -380,7 +382,7 @@ First, when considering average photon number $\bar{n}_{\text{code}}$ for single
 	\bar{n}_{\text{gkp}} &= 4
 \end{align*}
 
-and hence in this sense binomial $>$ cat $>$ gkp. We observed this ordering originally by considering the photon number pump required to satisfy the approximate quantum error correction conditions to order $\kappa \delta t$.
+and hence in this sense binomial $>$ cat $>$ gkp. We observed this ordering originally by considering the photon number pump required to satisfy the approximate quantum error correction conditions to order $\kappa \delta t$. However, we do also recall that cat codes can potentially correct any-order dephasing errors, and that GKP codes explicitly correct displacement errors abd we know that any trace class bosonic operator can be expanded in terms of displacement operators \cite{albert2017performance}. Hence, it may be myopic to compare these codes in the lens of single-loss correction capability.
 
 Second, we noted that single-mode binomial codes and GKP codes require an explicit correction gate at every timestep whether or not a photon jump has occurred. Intuitively, it seems as though a "passive" scheme as described in Section \ref{sec:cat-cont} where one can simply re-pump states continuously and observe whether photon loss events occur is simpler to realize physically. This is because in one small time step $\delta t$ one is only required to record an error syndrome rather than dynamically react to it, applying a unitary gate as required.
 
@@ -396,16 +398,20 @@ Also, note that the Fock state distributions of the binomial and cat codes are b
 
 \subsection{Performance Comparisons}
 
-VV Albert considers "channel fidelity", $F_\mathcal{E}$, which is the overlap between the initial state and the final state when considering an initial Bell state such that only the first qubit is acted on by the channel
-
-Optimal recovery for each code is computable via a semi-definite program
+In \cite{albert2017performance}, VV Albert et al consider "channel fidelity", $F_\mathcal{E}$,  as numerically tractable proxy for evaluating single-mode bosonic code protection capabilities. The motivation is that the noise model operators are not well behaved whereas optimal recovery for each code can readily be computed by utilizing a semi-definite program when considering channel fidelity. Furthermore, if we assume that our noise is completely described by the lossy bosonic channel (i.e. the encoding, recovery, and decoding are perfect), then channel fidelity essentially describes the robustness of entanglement in the presence of the noisy bosonic channel. Specifically, it is the measure of overlap between the initial state and the final state when considering an initial Bell state such that only the first qubit is acted on by the noise channel.
 
 \begin{figure}[H]
+\label{fig:perf}
 \centering
 \includegraphics[width=0.5\linewidth,keepaspectratio]{fidelity.png}	
 \end{figure}
 
-In this paper \cite{noh2018improved}, we prove that the GKP codes achieve quantum capacity of Gaussian loss channels up to at most a constant gap from an upper bound of the quantum capacity. In section II, we review and summarize key properties of Gaussian loss, amplification and random displacement channels, which will be used in later sections. In section III, we provide an im- proved upper bound of quantum capacity of the Gaussian loss channel, both in energy-constrained and unconstrained cases by introducing a slight modification of an earlier result in [18] (Theorems 10, 11 and 12; see also Eq.(42) for an improved upper bound of Gaussian random displacement channel ca- pacity). In section IV, we discuss experimental implementa- tion of the GKP codes and prove that the achievable quan- tum communication rate with the GKP codes deviates only by a constant number of qubits per channel use from our im- proved upper bound, assuming an energy-unconstrained sce- nario (Theorem 14). In section V, we address the energy- constrained encoding scenario and formulate a biconvex opti- mization problem to find an optimal set of encoding and de- coding which maximize the entanglement fidelity. We solve the biconvex optimization using alternating semidefinite pro- gramming (SDP), and show that the GKP code emerges as an optimal solution.
+Figure \ref{fig:perf} summarizes the performance of the optimal code from each family of codes (located by solving the semi-definite program), constraining the mean photon number and varying $\gamma$ (\ref{eq:gamma}).
+
+The numerical results show that codes designed to correct dominant errors at small $\gamma$ do not necessarily lead to good codes at larger $\gamma$. In our case, the cat and binomial codes protect exactly from the first few loss errors by making sure there is adequate Fock state spacing $S$ between the states, as described previously. Both cat and bin allow one to increase $S$ arbitrarily, while gkp codes have $S \in \{0, 1\}$ \cite{albert2017performance}, depending on whether their lattice is shifted from the origin or not. Nevertheless, the gkp strategy of suppressing all errors approximately seems to be the most effective.
+
+Along similar lines, in the paper \cite{noh2018improved} Noh et al prove that the GKP codes achieve quantum capacity of Gaussian loss channels up to at most a constant gap from an upper bound of the quantum capacity.
+
 \subsection{Multi-Mode Extensions}
 
 Here we briefly summarize recent results based upon these fundamental single-mode codes with the intention of creating near-term physically realizable codes with similar or improved error-correction capabilities.
@@ -543,7 +549,7 @@ Aside from improving lifetimes of quantum memories and quantum bits, bosonic mod
 
 \subsubsection{Future Developments}
 
-apply performance methods to multi-mode codes
+There are obvious generalizations of this analysis to other multi-mode codes mentioned in the introduction, storing multiple qubits worth of information; we are cur- rently pursuing some of them.
 
 Notably, our symmetry- operator framework provides a systematic way for construct- ing bosonic QEC codes based on properties of the underlying system dynamics. It also provides a straightforward general- ization from qubit-basis three-mode encoding to qudit-basis multi-mode encoding.
 
