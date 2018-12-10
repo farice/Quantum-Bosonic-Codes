@@ -309,17 +309,9 @@ Observe that from above the "quantum error correction matrix" as defined by the 
 
 \subsubsection{Discrete Dephasing Errors}
 
-Now, if we consider dephasing errors as well, the error correction matrix is no longer necessarily diagonal but is still Hermitian (as required).
+Now, if we consider dephasing errors as well, the error correction matrix is no longer necessarily diagonal but is still Hermitian (as required). For that reason, to detect and recover those errors one needs to make projective measurements in an orthonormalized basis, as with the code in Section \ref{sec:simple}. After a detection of an error, the original state is recovered by a unitary operation performing a state transfer between the subspaces of the error and logical code words.
 
 \subsubsection{Continuous Errors}
-
-The Fock state distributions of the binomial and cat codes are binomial and Poissonian, respectively. As the average number of photons is increased (larger N), both of these distributions approach a normal distribution, and so the binomial and cat codes asymptotically approach each other. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\linewidth,keepaspectratio]{binom_cat.png}	
-\caption{Figure borrowed from \cite{michael2016new} comparing binomial codes to cat codes. Observe that, in principle, unlimited dephasing errors can be tolerated by cat codes.}
-\end{figure}
 
 \subsection{GKP Codes}
 
@@ -332,9 +324,17 @@ The Fock state distributions of the binomial and cat codes are binomial and Pois
 
 \section{Discussion}
 
-\section{Theoretical Comparisons}
+\subsection{Theoretical Comparisons}
 
 The single-mode binomial codes require an explicit correction gate at every timestep whether or not a photon jump has occurred. However, binomial codes satisfy the approximate quantum error correction conditions to order $\delta t$ with a smaller average photon number: $\bar{n} = 2$ for the code of Eq. (2), rather than $\bar{n} = 2.3$ for the cat code that minimizes Eq. (32). Furthermore, the binomial codes operate in a restricted Hilbert space, which could be beneficial for the practical construction of the unitary operators required for error diagnosis and recovery. This particularly applies to errors involving $\hat{a}^\dag$ operators, whose operation on cat codes is less straightforward than $\hat{a}$ operators alone.
+
+The Fock state distributions of the binomial and cat codes are binomial and Poissonian, respectively. As the average number of photons is increased (larger N), both of these distributions approach a normal distribution, and so the binomial and cat codes asymptotically approach each other. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth,keepaspectratio]{binom_cat.png}	
+\caption{Figure borrowed from \cite{michael2016new} comparing binomial codes to cat codes. Observe that, in principle, unlimited dephasing errors can be tolerated by cat codes.}
+\end{figure}
 
 \subsection{Performance Comparisons}
 
