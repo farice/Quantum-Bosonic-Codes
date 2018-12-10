@@ -190,12 +190,21 @@ $$
 \ket{W_\downarrow} = \ket{2}
 $$. Hence, $\ket{E_1} = \ket{3}$ and $\ket{E_2} = \ket{1}$ give our error words. 
 
-As it turns out, we have the capability of very high fidelity quantum non-demolition measurements of the photon number parity. Hence, we can efficiently distinguish these logical/error words by measuring photon number and checking modulo 4. 
+As it turns out, we have the capability of very high fidelity quantum non-demolition measurements of the photon number parity \cite{sun2014tracking}. Hence, we can efficiently distinguish these logical/error words by measuring photon number and checking modulo 2. If the syndrome is 0, then we assume no error has occurred. If the syndrome is 1, we can perform a unitary operation swapping $\ket{E_1}$ with $\ket{W_\uparrow}$ and $\ket{E_2}$ with $\ket{W_\downarrow}$.
 
 Furthermore, observe that both logical states have the same mean photon number i.e. $\bra{W_\sigma} \hat{n} \ket{W_\sigma} = 2, \forall \sigma$. Therefore, $\hat{a} : \alpha\ket{W_\uparrow} + \beta\ket{W_\downarrow} \mapsto \alpha \ket{E_1} + \beta \ket{E_2}$. We say that this condition implies that there is no "deformation".
 
-How can we generalize from here? Well, we can add greater spacing between states so that we can detect higher order loss errors or alternatively gain errors. Furthermore, observe that action by $n$ "dephases" in the sense that, after transformation, the relative phases of the Fock states are transformed. This action leads to a superposition of codewords and error words. Project onto word basis to recover (efficient).
+So, how can we generalize from here? Well, we can add greater spacing between states so that we can detect higher order loss errors or alternatively gain errors. Intuitively, if there was a greater separation in photon number of the Fock states that define $\ket{W_\sigma}$ then one could measure modulo the spacing ("generalized parity") and determine how many loss events took place. For example, if we considered
 
+$$
+\ket{W_\uparrow} = \frac{\ket{0} + \sqrt{3}\ket{6}}{2}\\
+\ket{W_\downarrow} = \frac{\ket{3} + \sqrt{3}\ket{9}}{2}
+$$
+
+and measured the photon number modulo 3, then we'd say that syndrome 0 indicates no error, syndrome 1 indicates a single loss, and syndrome indicates double loss.
+
+ Furthermore, observe that action by $n$ "dephases" in the sense that, after transformation, the relative phases of the Fock states are transformed. This action leads to a superposition of codewords and error words. We can detect this dephasing error by making projective measurement onto the logical codeword basis and if the measurement eigenvalue is negative and no photon loss is detected, then we can perform the unitary state transfer $\ket{E_\sigma} \leftrightarrow \ket{W_\sigma}$ as prescribed above.
+ 
 \subsection{Cat Codes}
 
 Cat codes were first discovered in \cite{cochrane1999macroscopically} in the case of a single mode. Several papers have extended these codes to the multi-mode case in order to correct more errors or offer a hardware-efficient implementation \cite{albert2018multimode, leghtas2013hardware, mirrahimi2014dynamically} and we will summarize these results in Section \ref{sec:multi-cat}. We mirror the treatment of \cite{mirrahimi2014dynamically} since their four-photon driven dissipative process suppresses bit-flip errors.
