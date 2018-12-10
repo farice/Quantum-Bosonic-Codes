@@ -338,6 +338,9 @@ Now, if we consider dephasing errors as well, the error correction matrix is no 
 Refer back to the approximate quantum error conditions (\ref{eq:aqec}). Both $B_l^\dag B_l$ and $B_l^\dag C_l$ up to accuracy of $(\kappa \delta t)^L$ can be written as a polynomial of $\hat{n}$ with the highest degree of $L$ \cite{michael2016new}. From above, the binomial code words protected against $L$ photon losses have equal expectation value of $hat{n}^l$, for all $l \leq L$ and for both of the code words, which implies that approximate quantum error conditions are satisfied for them.
 
 Observe, however, that this is a theoretical bound on a recovery process when employing this code It remains to identify a specific, tractable process within this threshold. Indeed, the authors show that the simple process of checking parity and applying the appropriate unitary to swap error words and logical code words suffices.
+
+Furthermore, since no-jump evolution damps coherent states, $(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}$, the only necessary correction is a “re-pumping” of the cat states. This can be achieved using a discrete unitary correction operation (analogous to the binomial codes) or continuous non-linear amplification coming from an engineered reservoir \cite{leghtas2013hardware, mirrahimi2014dynamically}. The cat codes, as developed above, naturally allow for a "passive" error correction scheme where one is primarily tasked with recording whether photon loss events take place since they require only gradual continuous inversion of the damping of the coherent state amplitude without active discrete correction stages. The two-mode version of the above code has already been stabilized by reservoir engineering to achieve dominant two-photon drive and two-photon dissipation \cite{leghtas2015confining}.
+
 \subsection{GKP Codes}
 
 The Gottesman, Kitaev, and Preskill (GKP) codes \cite{gottesman2001encoding} are defined using the continuous basis of non-normalizable eigenstates of the position operator $\hat{x}$. A unique resulting feature of GKP codes is that the correctable errors themselves form a continuous set. The simplest ideal qubit GKP words are
@@ -360,16 +363,27 @@ Furthermore, the approximate code words are not perfectly orthogonal, so one mus
 
 Nevertheless, the GKP code words can protect against a larger set of errors than the minimal binomial code. Due to the various choices of starting state and filter as well as due to the difficulty of comparing continuous correctable error sets to discrete ones, a detailed comparison of the relative capabilities of the GKP and binomial/cat classes of codes remains to be done.
 
+The GKP code realizes approximate error correction usng ancillae states prepared in the equal superposition of the logical-basis states, homodyne measurements, and incoherent $\chi^{(2)}$ interactions. Ancillae preparation requires $\chi^{(2)}$ interactions that add to the GKP code’s error-correction resource burden\cite{niu2018hardware}.
+
 \section{Discussion}
 
 \subsection{Theoretical Comparisons}
 
-The single-mode binomial codes require an explicit correction gate at every timestep whether or not a photon jump has occurred. However, binomial codes satisfy the approximate quantum error correction conditions to order $\delta t$ with a smaller average photon number: $\bar{n} = 2$ for the code of Eq. (2), rather than $\bar{n} = 2.3$ for the cat code that minimizes Eq. (32). Furthermore, the binomial codes operate in a restricted Hilbert space, which could be beneficial for the practical construction of the unitary operators required for error diagnosis and recovery. This particularly applies to errors involving $\hat{a}^\dag$ operators, whose operation on cat codes is less straightforward than $\hat{a}$ operators alone.
+From our development of the codes in the previous section, we've observed essential differentiating properties.
+
+First, when considering average photon number $\bar{n}_{\text{code}}$ for single-loss correction we observed the ordering and can show that specifically \cite{michael2016new},
+
+\begin{align*}
+	\bar{n}_{\text{binom}} &= 2\\
+	\bar{n}_{\text{cat}} &= 2.3\\
+	\bar{n}_{\text{gkp}} &= 4
+\end{align*}
+
+and hence in this sense binomial $>$ cat $>$ gkp. We observed this ordering originally by considering the photon number pump required to satisfy the approximate quantum error correction conditions to order $\kappa \delta t$.
+
+Second, we noted that single-mode binomial codes and GKP codes require an explicit correction gate at every timestep whether or not a photon jump has occurred.  Furthermore, the binomial codes operate in a restricted Hilbert space, which could be beneficial for the practical construction of the unitary operators required for error diagnosis and recovery. This particularly applies to errors involving $\hat{a}^\dag$ operators, whose operation on cat codes is less straightforward than $\hat{a}$ operators alone.
 
 The Fock state distributions of the binomial and cat codes are binomial and Poissonian, respectively. As the average number of photons is increased (larger N), both of these distributions approach a normal distribution, and so the binomial and cat codes asymptotically approach each other. 
-
-% TODO
-Furthermore, since no-jump evolution damps coherent states, $(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}(1 - \gamma)^{\hat{n}}\ket{\alpha} = \ket{(1 - \gamma) \alpha}$, the only necessary correction is a “re-pumping” of the cat states. This can be achieved using a discrete unitary correction operation (analogous to the binomial codes) or continuous non-linear amplification coming from an engineered reservoir [17, 18] (analogous to similar passive/autonomous error correction schemes [94, 95]). The basic principle of passive schemes is stabilization of a manifold of codewords as an attractive (stable) fixed-point of drives and dissipation so that the only remaining task is to track generalized parity for photon jumps [18]. The cat codes based on equal amplitude coherent state superpositions, cf. Eq. (31), are ‘natural’ candidates for these purposes since they require only gradual continuous inversion of the damping of the coherent state amplitude without active discrete correction stages. The two-leg cat has already been stabilized by reservoir engineering to achieve dominant two-photon drive and two-photon dissipation [96].
 
 \begin{figure}
 \centering
@@ -520,6 +534,9 @@ Noon codes
 \subsubsection{Importance of Bosonic Systems}
 
 The first one is fundamental: with each added qubit, several new decoherence channels are added. This multiplies the number of possible errors and requires measuring more error syndromes. The second is practical: it still seems extremely challenging to build a register of more than on the order of 10 qubits.
+
+Aside from improving lifetimes of quantum memories and quantum bits, bosonic mode quantum error correction is also useful for quantum teleportation [103, 104] and quantum communication, which consists of quantum state transfer and generation of high-fidelity entangled pairs of quantum bits between two distant nodes in a quantum network. We consider here a primitive task, namely the
+‘pitch-and-catch’ scenario [24, 25, 105] for quantum state transfer which can be used for quantum repeaters [106, 107]. The scenario consists of (see Fig. 3) initialization of qubit A into a superposition of the ground and excited state, encoding this superposition into the logical code words of the send cavity via a unitary swap operation, letting the cavity state leak in a time-reversal symmetric manner (‘pitch’) into a transmission line or to other kind of a flying oscillator mode such that the inverse process into the receiving cavity (‘catch’) is most efficient [105, 108]. The transfer is finalized by decoding the received cavity state via a unitary swap operation to the qubit B. The full process corresponds to a quantum state transfer between the qubits through the modes. The remote physical qubits can be entangled by using the same protocol with the first swap operation being replaced with a CNOT-gate between the physical qubit A and the logical qubit of the cavity.
 
 \subsubsection{Future Developments}
 
